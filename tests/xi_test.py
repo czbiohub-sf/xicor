@@ -1,5 +1,5 @@
 import pytest
-from xi import xi, xiPValue
+from pyxi.pyxi import xi, xiPValue
 
 
 def test_xi_and_p_val():
@@ -26,18 +26,18 @@ def test_xi_and_p_val():
     xip_4 = xiPValue(xi_4)
 
     # values from R code
-    assert xi_1 == 0.2749999999999999
+    assert xi_1.correlation == 0.2749999999999999
     assert xip_1.asymptotic(ties=False, nperm=1000, factor=True) == 0.07841556446646347
-    assert xip_1.permutaion_test(nperm=1000) == 0.048
+    assert xip_1.permutation_test(nperm=1000) == 0.048
 
-    assert xi_2 == 0.6
+    assert xi_2.correlation == 0.6
     assert xip_2.asymptotic(ties=False, nperm=1000, factor=True) == 0.001004022
-    assert xip_2.permutaion_test(nperm=1000) == 0    
+    assert xip_2.permutation_test(nperm=1000) == 0    
 
-    assert xi_3 == 0.725
+    assert xi_3.correlation == 0.725
     assert xip_3.asymptotic(ties=False, nperm=1000, factor=True) == 9.476043e-05
-    assert xip_3.permutaion_test(nperm=1000) == 0
+    assert xip_3.permutation_test(nperm=1000) == 0
     
-    assert xi_4 == 0.125
+    assert xi_4.correlation == 0.125
     assert xip_4.asymptotic(ties=False, nperm=1000, factor=True) == 0.2599336
-    assert xip_4.permutaion_test(nperm=1000) == 0.378
+    assert xip_4.permutation_test(nperm=1000) == 0.378

@@ -97,7 +97,7 @@ class xiPValue:
         a = np.mean([i*j*j for i,j in zip(ind2,q)])/self.sample_size
         c = np.mean([i*j for i,j in zip(ind2,q)])/self.sample_size
         cq = np.cumsum(q)
-        m =[(i + (self.sample_size - j)*k)/n for i,j,k in zip(cq,ind,q)]
+        m =[(i + (self.sample_size - j)*k)/self.sample_size for i,j,k in zip(cq,ind,q)]
         b = np.mean([np.square(i) for i in m])
         v = (a - 2*b + np.square(c))/np.square(self.inverse_g_mean)
         return 1-ss.norm.cdf(np.sqrt(self.sample_size)*self.correlation/np.sqrt(v))
