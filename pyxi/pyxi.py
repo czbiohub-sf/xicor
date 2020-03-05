@@ -74,6 +74,9 @@ class xi:
         """xi correlation"""
         return 1 - self.mean_absolute/self.inverse_g_mean
 
+    @classmethod
+    def xi(cls, x, y):
+        return cls(x, y)
 
     def pval_asymptotic(self, ties=False, nperm=1000, factor=True):
         # If there are no ties, return xi and theoretical P-value:
@@ -126,6 +129,4 @@ class xi:
         # Return xi and P-value based on permutation test:
         return (np.mean([ri for ri in r if ri > self.correlation]))
 
-    @classmethod
-    def xi(cls, x, y):
-        return cls(x, y)
+
