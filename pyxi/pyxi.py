@@ -1,9 +1,7 @@
 import pandas as pd
 import numpy as np
 import scipy.stats as ss
-from scipy.stats import norm
 from collections import namedtuple
-
 
 
 class xi:
@@ -26,8 +24,8 @@ class xi:
     
     @property
     def x_ordered_rank(self):
-        # PI is the rank vector for x, with ties broken at ordinal (needs to be random)
-        # return self.data.x.rank(method='dense')    
+        # PI is the rank vector for x, with ties broken at random
+        # Not mine: source (https://stackoverflow.com/questions/47429845/rank-with-ties-in-python-when-tie-breaker-is-random)
         return self.data.x.sample(frac=1).rank(method='first').reindex_like(self.data.x)
         
     @property
@@ -38,7 +36,9 @@ class xi:
     @property
     def g(self):
         # g[i] is number of j s.t. y[j] >= y[i], divided by n.
-        return pd.Series([1-i for i in self.data.y]).rank(method="max")/self.sample_size 
+        return pd.Series(
+            [1-i for i in self.data.y]
+        ).rank(method="max")/self.sample_size
     
     @property
     def x_ordered(self):
@@ -79,7 +79,11 @@ class xi:
         # If there are no ties, return xi and theoretical P-value:
 
         if ties:
-            return 1-ss.norm.cdf(np.sqrt(self.sample_size)*self.correlation/np.sqrt(2/5))
+            return 1-ss.norm.cdf(
+                np.sqrt(
+                    self.sample_size
+                )*self.correlation/np.sqrt(2/5)
+            )
 
         # If there are ties, and the theoretical method is to be used for calculation P-values:
         # The following steps calculate the theoretical variance in the presence of ties:
@@ -106,7 +110,9 @@ class xi:
         b = np.mean([np.square(i) for i in m])
         v = (a - 2*b + np.square(c))/np.square(self.inverse_g_mean)
         
-        return 1-ss.norm.cdf(np.sqrt(self.sample_size)*self.correlation/np.sqrt(v))
+        return 1-ss.norm.cdf(
+            np.sqrt(self.sample_size)*self.correlation/np.sqrt(v)
+        )
 
     def pval_permutation_test(self, nperm=1000):
         # If permutation test is to be used for calculating P-value:
