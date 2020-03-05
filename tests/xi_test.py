@@ -1,6 +1,11 @@
 import pytest
 from pyxi.pyxi import xi
 
+'''
+From Wikipedia:
+Anscombe's quartet comprises four data sets that have nearly identical simple descriptive statistics, yet have very different distributions and appear very different when graphed. Each dataset consists of eleven (x,y) points. They were constructed in 1973 by the statistician Francis Anscombe to demonstrate both the importance of graphing data before analyzing it and the effect of outliers and other influential observations on statistical properties. 
+'''
+
 
 @pytest.fixture
 def anscombes_xis(anscombes_quartet):
