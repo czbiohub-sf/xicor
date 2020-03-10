@@ -117,16 +117,16 @@ class xi:
             np.sqrt(self.sample_size)*self.correlation/np.sqrt(v)
         )
 
-    def pval_permutation_test(self, nperm=1000):
-        # If permutation test is to be used for calculating P-value:
-        r = np.zeros((nperm,), dtype=int)
-        for idx,val in enumerate(r):
-        # x1 = runif(n, 0, 1)
-            x1 = np.random.uniform(self.sample_size, 0, 1)
-            x1_xi = self.xi(x1, self.data.y).correlation
-            r[idx] = x1_xi
+    # def pval_permutation_test(self, nperm=1000):
+    #     # If permutation test is to be used for calculating P-value:
+    #     r = np.zeros((nperm,), dtype=float)
+    #     for idx,val in enumerate(r):
+    #     # x1 = runif(n, 0, 1)
+    #         x1 = np.random.uniform(0, 1, self.sample_size)
+    #         x1_xi = self.xi(x1, self.data.y).correlation
+    #         r[idx] = x1_xi
 
-        # Return xi and P-value based on permutation test:
-        return (np.mean([ri for ri in r if ri > self.correlation]))
+    #     # Return xi and P-value based on permutation test:
+    #     return (np.mean([ri for ri in r if ri > self.correlation]))
 
 
