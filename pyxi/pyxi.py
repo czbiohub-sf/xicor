@@ -25,7 +25,7 @@ class xi:
     @property
     def x_ordered_rank(self):
         # PI is the rank vector for x, with ties broken at random
-        # Not mine: source (https://stackoverflow.com/questions/47429845/rank-with-ties-in-python-when-tie-breaker-is-random)
+        # Not mine: source (https://stackoverflow.com/a/47430384/1628971)
         return self.data.x.sample(frac=1).rank(method='first').reindex_like(self.data.x)
         
     @property
@@ -128,5 +128,4 @@ class xi:
 
     #     # Return xi and P-value based on permutation test:
     #     return (np.mean([ri for ri in r if ri > self.correlation]))
-
 
