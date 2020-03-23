@@ -1,4 +1,4 @@
-name: correlation
+name: pyxi
 channels:
   - r
   - defaults
@@ -230,4 +230,3 @@ dependencies:
     - urllib3==1.25.8
     - yarg==0.1.9
 prefix: /home/phoenix/miniconda3/envs/correlation
-
