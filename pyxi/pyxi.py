@@ -19,11 +19,15 @@ class Xi:
     def x_ordered_rank(self):
         # PI is the rank vector for x, with ties broken at random
         # Not mine: source (https://stackoverflow.com/a/47430384/1628971)
+        # random shuffling of the data - reason to use random.choice is that
+        # pd.sample(frac=1) uses the same randomizing algorithm
         len_x = len(self.x)
         randomized_indices = np.random.choice(
             np.arange(len_x), len_x, replace=False)
         randomized = [self.x[idx] for idx in randomized_indices]
+        # same as pandas rank method 'first'
         rankdata = ss.rankdata(randomized, method='ordinal')
+        # Reindexing based on pairs of indices before and after
         unrandomized = [
             rankdata[j] for i, j in sorted(
                 zip(randomized_indices, range(len_x)))]
