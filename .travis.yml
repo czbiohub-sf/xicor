@@ -1,0 +1,14 @@
+language: python
+python:
+  - "3.5.2"
+# command to install dependencies
+install:
+  - pip install -r requirements.txt
+script:
+  # command to lint code
+  - flake8 --config .flake8
+  # command to run tests
+  - pytest --cov .
+
+# operating system tested on
+os: linux
