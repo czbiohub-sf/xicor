@@ -1,5 +1,3 @@
-import random
-
 import numpy as np
 import scipy.stats as ss
 
@@ -21,11 +19,15 @@ class xi:
     def x_ordered_rank(self):
         # PI is the rank vector for x, with ties broken at random
         # Not mine: source (https://stackoverflow.com/a/47430384/1628971)
-        x = list(enumerate(self.x))
-        random.shuffle(x)
-        indices, l = zip(*x)
-        rankdata = ss.rankdata(l, method='ordinal').tolist()
-        return np.array([rankdata[indices[i]] for i in indices])
+        len_x = len(self.x)
+        randomized_indices = np.random.choice(
+            np.arange(len_x), len_x, replace=False)
+        randomized = [self.x[idx] for idx in randomized_indices]
+        rankdata = ss.rankdata(randomized, method='ordinal')
+        unrandomized = [
+            rankdata[j] for i, j in sorted(
+                zip(randomized_indices, range(len_x)))]
+        return unrandomized
 
     @property
     def y_rank_max(self):
