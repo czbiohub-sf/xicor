@@ -2,7 +2,7 @@ import numpy as np
 import scipy.stats as ss
 
 
-class xi:
+class Xi:
 
     def __init__(self, x, y):
         # is check for non-null or zero's necessary?
@@ -38,7 +38,7 @@ class xi:
     def g(self):
         # g[i] is number of j s.t. y[j] >= y[i], divided by n.
         return ss.rankdata(
-            [1 - i for i in self.y], method="max") / self.sample_size
+            [-i for i in self.y], method="max") / self.sample_size
 
     @property
     def x_ordered(self):

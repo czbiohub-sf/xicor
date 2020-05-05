@@ -2,7 +2,7 @@ import random
 import numpy as np
 import pytest
 
-from pyxi.pyxi import xi
+from pyxi.pyxi import Xi
 
 '''
 From Wikipedia:
@@ -21,10 +21,10 @@ def anscombes_xis(anscombes_quartet):
     random.seed(2020)
     np.random.seed(2020)
     xis = {
-        "xi_1": xi(anscombes_quartet["x_1"], anscombes_quartet["y_1"]),
-        "xi_2": xi(anscombes_quartet["x_2"], anscombes_quartet["y_2"]),
-        "xi_3": xi(anscombes_quartet["x_3"], anscombes_quartet["y_3"]),
-        "xi_4": xi(anscombes_quartet["x_4"], anscombes_quartet["y_4"]),
+        "xi_1": Xi(anscombes_quartet["x_1"], anscombes_quartet["y_1"]),
+        "xi_2": Xi(anscombes_quartet["x_2"], anscombes_quartet["y_2"]),
+        "xi_3": Xi(anscombes_quartet["x_3"], anscombes_quartet["y_3"]),
+        "xi_4": Xi(anscombes_quartet["x_4"], anscombes_quartet["y_4"]),
     }
 
     return xis
