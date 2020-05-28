@@ -44,10 +44,10 @@ def test_p_val_asymptotic(anscombes_xis):
     np.random.seed(2020)
     # values taken from R code
     assert anscombes_xis["xi_1"].pval_asymptotic(
-        ties=False, nperm=1000, factor=True) == 0.07841556446646347
+        ties=False, nperm=1000) == 0.07841556446646347
     assert anscombes_xis["xi_2"].pval_asymptotic(
-        ties=False, nperm=1000, factor=True) == 0.0010040217037570187
+        ties=False, nperm=1000) == 0.0010040217037570187
     assert anscombes_xis["xi_3"].pval_asymptotic(
-        ties=False, nperm=1000, factor=True) == 0.04989192742513937
+        ties=False, nperm=1000) == 0.04989192742513937
     assert anscombes_xis["xi_4"].pval_asymptotic(
-        ties=False, nperm=1000, factor=True) == 0.2599336349448975
+        ties=False, nperm=1000) == 0.2599336349448975
