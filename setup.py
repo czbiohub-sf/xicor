@@ -18,6 +18,8 @@ setuptools.setup(
     name="pyxi",
     author="Phoenix Logan",
     author_email="phoenix.logan@czbiohub.org",
+    maintainer="Pranathi Vemuri",
+    maintainer_email="pranathi93.vemuri@gmail.com",
     description="xi correlation for tied data",
     long_description=readme,
     long_description_content_type="text/markdown",
