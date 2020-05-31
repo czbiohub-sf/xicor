@@ -10,7 +10,6 @@ script:
   # command to run tests with coverage
   - pytest --cov .
 after_success:
-  - codecov
   - bash <(curl -s https://codecov.io/bash)
 
 # operating system tested on
