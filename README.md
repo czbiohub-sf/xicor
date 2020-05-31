@@ -1,6 +1,7 @@
 pyxi
 ================================
 ![Tests](https://travis-ci.com/czbiohub/pyxi.svg?)
+[![codecov](https://codecov.io/gh/czbiohub/pyxi/branch/master/graph/badge.svg)](https://codecov.io/gh/czbiohub/pyxi)
 
 xi correlation method adapted for python
 
