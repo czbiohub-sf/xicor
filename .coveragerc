@@ -1,0 +1,7 @@
+[run]
+include=
+    pyxi/*.py
+    pyxi_lib/*.py
+omit =
+    setup.py
+    tests/*
