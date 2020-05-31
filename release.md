@@ -90,9 +90,8 @@ deactivate
 source bin/activate
 pip install -U setuptools
 # install as much as possible from non-test server!
-pip install scipy pytest-cov numpy flake8
+pip install scipy numpy
 pip install -i https://test.pypi.org/simple --pre pyxi
-pyxi info  # should print "pyxi version ${new_version}${rc}"
 ```
 5\. Do any final testing:
 
