@@ -1,5 +1,5 @@
-scipy==1.4.1
+scipy>=1.4.1
 pytest
 pytest-cov
-numpy==1.18.1
-flake8==3.2.1
+numpy
+flake8
