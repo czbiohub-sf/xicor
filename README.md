@@ -1,4 +1,7 @@
-# pyxi
+pyxi
+================================
+![Tests](https://travis-ci.com/czbiohub/pyxi.svg?)
+
 xi correlation method adapted for python
 
 ## What is pyxi?
