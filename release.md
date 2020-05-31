@@ -90,7 +90,7 @@ deactivate
 source bin/activate
 pip install -U setuptools
 # install as much as possible from non-test server!
-pip install pytest pytest-cov scipy numpy
+pip install pytest pytest-cov scipy numpy flake8
 pip install -i https://test.pypi.org/simple --pre pyxi
 ```
 5\. Do any final testing:
