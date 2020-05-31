@@ -3,11 +3,11 @@ import scipy.stats as ss
 
 
 class Xi:
-
+    """
+    x and y are the data vectors
+    """
     def __init__(self, x, y):
-        # is check for non-null or zero's necessary?
-        # should be done beforehand as filtering on whole dataframe is
-        # faster than on each row at a time
+
         self.x = x
         self.y = y
 
@@ -81,7 +81,23 @@ class Xi:
     def xi(cls, x, y):
         return cls(x, y)
 
-    def pval_asymptotic(self, ties=False, nperm=1000, factor=True):
+    def pval_asymptotic(self, ties=False, nperm=1000):
+        """
+        Returns p values of the correlation
+
+        Args:
+            ties: boolean
+                If ties is true, the algorithm assumes that the data has ties
+                and employs the more elaborated theory for calculating
+                the P-value. Otherwise, it uses the simpler theory. There is
+                no harm in setting tiles True, even if there are no ties.
+            nperm: int
+                The number of permutations for the permutation test, if needed.
+                default 1000
+
+        Returns:
+            p value
+        """
         # If there are no ties, return xi and theoretical P-value:
 
         if ties:
