@@ -10,7 +10,7 @@ with open('requirements.txt') as requirements_file:
     requirements = requirements_file.read()
 
 test_requirements = [
-    'pytest', 'coverage', "flake8"
+    'pytest', 'coverage', "flake8", "pytest-cov"
 ]
 
 
