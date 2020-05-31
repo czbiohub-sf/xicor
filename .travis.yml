@@ -7,8 +7,10 @@ install:
 script:
   # command to lint code
   - flake8 --config .flake8
-  # command to run tests
+  # command to run tests with coverage
   - pytest --cov .
+after_success:
+  - codecov
 
 # operating system tested on
 os: linux
