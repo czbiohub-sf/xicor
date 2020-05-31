@@ -8,7 +8,7 @@ script:
   # command to lint code
   - flake8 --config .flake8
   # command to run tests with coverage
-  - pytest --cov .
+  - make coverage
 after_success:
   - bash <(curl -s https://codecov.io/bash)
 
