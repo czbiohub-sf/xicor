@@ -14,7 +14,6 @@ Pyxi is an implementation of the "xi" correlation metric described in Chatterjee
 from pyxi.pyxi import Xi
 xi_obj = Xi([1, 2, 3], [1, 2, 3])
 correlation = xi_obj.correlation
-pvals = xi_obj.pval_asymptotic(
-        ties=False, nperm=1000)
+pvals = xi_obj.pval_asymptotic(ties=False, nperm=1000)
 
 ```
