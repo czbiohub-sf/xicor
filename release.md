@@ -20,7 +20,7 @@ cd pyxi
 2\. Set your new version number and release candidate (you might want to check https://github.com/czbiohub/pyxi/releases for next version number):
 ```
 new_version=0.1.0
-rc=rc2
+rc=rc3
 ```
  and then tag the release candidate with the new version number prefixed by
    the letter 'v':
