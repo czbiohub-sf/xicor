@@ -43,5 +43,5 @@ setuptools.setup(
     use_scm_version={
         'write_to': 'pyxi/version.py'},
     test_suite='tests',
-    tests_require=test_requirements
+    extras_require={'test': test_requirements}
 )
