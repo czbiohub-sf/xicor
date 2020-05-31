@@ -33,6 +33,8 @@ setuptools.setup(
             "test_*"]),
     include_package_data=True,
     install_requires=requirements,
+    setup_requires=[
+        "setuptools>=38.6.0", "setuptools_scm", 'setuptools_scm_git_archive'],
     license="MIT",
     zip_safe=False,
     classifiers=[
