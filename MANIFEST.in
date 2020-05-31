@@ -1,0 +1,7 @@
+include LICENSE Makefile README.md HISTORY.md requirements.txt
+
+recursive-include pyxi/tests *
+recursive-exclude * __pycache__
+recursive-exclude * *.py[co]
+
+recursive-include docs *.rst conf.py Makefile make.bat
