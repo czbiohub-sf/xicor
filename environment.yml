@@ -1,4 +1,4 @@
-name: pyxi
+name: xicor
 channels:
   - defaults
 dependencies:

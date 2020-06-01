@@ -15,7 +15,7 @@ test_requirements = [
 
 
 setuptools.setup(
-    name="pyxi",
+    name="xicor",
     author="Phoenix Logan",
     author_email="phoenix.logan@czbiohub.org",
     maintainer="Pranathi Vemuri",
@@ -23,7 +23,7 @@ setuptools.setup(
     description="xi correlation for tied data",
     long_description=readme,
     long_description_content_type="text/markdown",
-    url="https://github.com/czbiohub/pyxi/",
+    url="https://github.com/czbiohub/xicor/",
     packages=setuptools.find_packages(
         exclude=[
             "tests",
@@ -43,7 +43,7 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     use_scm_version={
-        'write_to': 'pyxi/version.py'},
+        'write_to': 'xicor/version.py'},
     test_suite='tests',
     extras_require={'test': test_requirements}
 )

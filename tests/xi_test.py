@@ -2,7 +2,7 @@ import random
 import numpy as np
 import pytest
 
-from pyxi.pyxi import Xi
+from xicor.xicor import Xi
 
 '''
 From Wikipedia:

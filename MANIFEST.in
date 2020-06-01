@@ -1,6 +1,6 @@
 include LICENSE Makefile README.md HISTORY.md requirements.txt
 
-recursive-include pyxi/tests *
+recursive-include xicor/tests *
 recursive-exclude * __pycache__
 recursive-exclude * *.py[co]
 
