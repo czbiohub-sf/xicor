@@ -4,9 +4,9 @@ from pkg_resources import get_distribution, DistributionNotFound
 __version__ = '0.1.0dev0'
 
 
-__title__ = 'pyxi'
+__title__ = 'xicor'
 __description__ = 'xi correlation for tied data'
-__uri__ = 'https://github.com/czbiohub/pyxi'
+__uri__ = 'https://github.com/czbiohub/xicor'
 __doc__ = __description__ + ' <' + __uri__ + '>'
 
 __author__ = 'Phoenix Logan'
