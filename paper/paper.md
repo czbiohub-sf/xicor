@@ -34,6 +34,8 @@ $Xi$ is a novel coefficient of correlation introduced by @chatterjee2020new.
 
 Only [`scipy.stats.kendalltau`](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.kendalltau.html) has multiple options of breaking ties.
 
+![Correlation coefficients computed on Anscombe's quartet dataset. In particular, "dataset = IV" in the lower right corner has a Xi/$\Xi$ correlation of zero, as the majority of values in the $x$ variable are tied.](anscombes_quartet_correlations.svg)
+
 This implementation is based on the [R implementation](https://statweb.stanford.edu/~souravc/xi.R) linked in the paper.
 
 
