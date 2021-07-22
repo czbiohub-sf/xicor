@@ -1,10 +1,17 @@
 name: xicor
 channels:
+  - bioconda
+  - conda-forge
+  - r
   - defaults
 dependencies:
-  - pip
+  - flake8
+  - pandas
+  - pytest-cov
+  - seaborn
+  - numpy
+  - scipy
+  - ipykernel
   - pip:
-    - scipy==1.4.1
-    - pytest-cov==2.8.1
-    - numpy==1.18.1
-    - flake8==3.2.1
+    - xicor
+prefix: /Users/olgabot/opt/anaconda3/envs/xicor
