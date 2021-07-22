@@ -37,7 +37,10 @@ Xi ($Xi$) is a novel coefficient of correlation introduced by @chatterjee2020new
 
 ![Correlation coefficients computed on Anscombe's quartet dataset. In particular, "dataset = IV" in the lower right corner has a Xi/$\Xi$ correlation of zero, as the majority of values in the $x$ variable are tied.](anscombes_quartet_correlations.svg)
 
-This implementation is based on the [R implementation](https://statweb.stanford.edu/~souravc/xi.R) linked in the paper.
+This implementation is based on the [R implementation](https://statweb.stanford.edu/~souravc/xi.R) linked in the paper. Our initial implementation used [pandas](https://pandas.pydata.org/) to perform the rank computation necessary to compute $Xi$, however we found this to be slow. Instead, we used [scipy](https://www.scipy.org/) to compute ranks and [numpy](https://numpy.org/) to compute mean and standard deviation, get ordered indices, and random sampling. This resulted in a 10-20x speedup, as shown below.
+
+![Correlation coefficients computed on Anscombe's quartet dataset. In particular, "dataset = IV" in the lower right corner has a Xi/$\Xi$ correlation of zero, as the majority of values in the $x$ variable are tied.](pandas_vs_scipy_implementation.svg)
+
 
 
 # Acknowledgements
