@@ -13,5 +13,5 @@ dependencies:
   - scipy
   - ipykernel
   - pip:
-    - xicor==1.0.1.dev1+g77c6fb4
+    - xicor
 prefix: /Users/olgabot/opt/anaconda3/envs/xicor
