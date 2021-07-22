@@ -37,13 +37,13 @@ Tie-breaking in correlation computation is a challenging problem. Given two vect
 Xi ($Xi$) is a novel coefficient of correlation introduced by @chatterjee2020new. In this coefficient, ties are broken *randomly*, which allows for a more robust calculation of correlation. Below is Anscombe's quartet from @Anscombe1973-mv, a dataset of four pairs of $X$ and $Y$ values designed to have nearly the same linear summary statistics. For each dataset, four different coefficients of correlation are shown: (1) Pearson, (2) Spearman, (3) Kendall, and (4) Xi ($Xi$). Dataset IV is a particularly striking example of the Xi metric, as $Xi = 0$ due to the large number of ties, whereas the other correlation metric values are larger. Thus, the Xi metric is very useful to distinguish between spurious correlations in largely sparse data with many zeros or ties.
 
 
-![Correlation coefficients computed on Anscombe's quartet dataset. In particular, "dataset = IV" in the lower right corner has a Xi/$\Xi$ correlation of zero, as the majority of values in the $x$ variable are tied.](anscombes_quartet_correlations.svg)
+![Correlation coefficients computed on Anscombe's quartet dataset. In particular, "dataset = IV" in the lower right corner has a Xi/$\Xi$ correlation of zero, as the majority of values in the $x$ variable are tied.](anscombes_quartet_correlations.png)
 
 # Python implementation of Xi $\Xi$ correlation
 
 This implementation is based on the [R implementation](https://statweb.stanford.edu/~souravc/xi.R) linked in the paper. Our initial implementation used [pandas](https://pandas.pydata.org/) to perform the rank computation necessary to compute $Xi$, however we found this to be slow. Instead, we used [scipy](https://www.scipy.org/) to compute ranks and [numpy](https://numpy.org/) to compute mean and standard deviation, get ordered indices, and random sampling. This resulted in a 10-20x speedup, as shown below.
 
-![Correlation coefficients computed on Anscombe's quartet dataset. In particular, "dataset = IV" in the lower right corner has a Xi/$\Xi$ correlation of zero, as the majority of values in the $x$ variable are tied.](pandas_vs_scipy_implementation.svg)
+![Correlation coefficients computed on Anscombe's quartet dataset. In particular, "dataset = IV" in the lower right corner has a Xi/$\Xi$ correlation of zero, as the majority of values in the $x$ variable are tied.](pandas_vs_scipy_implementation.png)
 
 
 
