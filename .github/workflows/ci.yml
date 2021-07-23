@@ -1,0 +1,40 @@
+name: Pytest
+# This workflow is triggered on pushes and PRs to the repository.
+# It runs the pipeline with the minimal test dataset to check that it completes without any syntax errors
+on: [push, pull_request]
+
+jobs:
+  test:
+    env:
+      NXF_VER: ${{ matrix.nxf_ver }}
+      NXF_ANSI_LOG: false
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        # Nextflow versions: check pipeline minimum and current latest
+        python-version: ['3.5']
+        os: ['ubuntu-latest', 'macos-latest', 'windows-latest']
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Miniconda
+        uses: conda-incubator/setup-miniconda@v2
+        with:
+          auto-update-conda: true
+          python-version: ${{ matrix.python-version }}
+      - name: Install Dependencies with Python ${{ matrix.python-version }}
+        shell: bash -l {0}
+        run: |
+          conda env create -n testenv --file environment.yml
+          conda activate testenv
+          pip install .
+      - name: Run tests with coverage
+        shell: bash -l {0}
+        run: |
+          conda activate testenv
+          pip install -r requirements.txt
+          make coverage
+      - name: Send coverage to codecov.io
+        shell: bash -l {0}
+        run: |
+          pip install codecov
+          bash <(curl -s https://codecov.io/bash)

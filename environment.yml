@@ -12,6 +12,3 @@ dependencies:
   - numpy
   - scipy
   - ipykernel
-  - pip:
-    - xicor
-prefix: /Users/olgabot/opt/anaconda3/envs/xicor
