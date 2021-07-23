@@ -1,5 +1,5 @@
 ---
-title: 'xicorr: A Python package of a novel tie-breaking correlation metric'
+title: 'xicor: A Python package of a novel tie-breaking correlation metric'
 tags:
   - Python
   - statistics
