@@ -5,7 +5,6 @@ from collections import namedtuple
 
 
 class XiPandas:
-
     def __init__(self, x, y):
         self.raw_x = pd.Series(x)
         self.raw_y = pd.Series(y)
@@ -16,7 +15,7 @@ class XiPandas:
 
     @property
     def data(self):
-        CorrData = namedtuple('CorrData', ['x', 'y'])
+        CorrData = namedtuple("CorrData", ["x", "y"])
         both_not_null = self.raw_x.isnull() & self.raw_y.isnull()
         x = self.raw_x[~both_not_null]
         y = self.raw_y[~both_not_null]
@@ -26,8 +25,7 @@ class XiPandas:
     def x_ordered_rank(self):
         # PI is the rank vector for x, with ties broken at random
         # Not mine: source (https://stackoverflow.com/a/47430384/1628971)
-        return self.data.x.sample(frac=1).rank(
-            method='first').reindex_like(self.data.x)
+        return self.data.x.sample(frac=1).rank(method="first").reindex_like(self.data.x)
 
     @property
     def y_rank_max(self):
@@ -37,9 +35,10 @@ class XiPandas:
     @property
     def g(self):
         # g[i] is number of j s.t. y[j] >= y[i], divided by n.
-        return pd.Series(
-            [1 - i for i in self.data.y]
-        ).rank(method="max") / self.sample_size
+        return (
+            pd.Series([1 - i for i in self.data.y]).rank(method="max")
+            / self.sample_size
+        )
 
     @property
     def x_ordered(self):
@@ -53,17 +52,21 @@ class XiPandas:
 
     @property
     def mean_absolute(self):
-        return np.mean(
-            np.abs(
-                [
-                    x - y for x, y
-                    in zip(
-                        self.x_rank_max_ordered[0:(self.sample_size - 1)],
-                        self.x_rank_max_ordered[1:self.sample_size]
-                    )
-                ]
+        return (
+            np.mean(
+                np.abs(
+                    [
+                        x - y
+                        for x, y in zip(
+                            self.x_rank_max_ordered[0 : (self.sample_size - 1)],
+                            self.x_rank_max_ordered[1 : self.sample_size],
+                        )
+                    ]
+                )
             )
-        ) * (self.sample_size - 1) / (2 * self.sample_size)
+            * (self.sample_size - 1)
+            / (2 * self.sample_size)
+        )
 
     @property
     def inverse_g_mean(self):
@@ -84,9 +87,7 @@ class XiPandas:
 
         if ties:
             return 1 - ss.norm.cdf(
-                np.sqrt(
-                    self.sample_size
-                ) * self.correlation / np.sqrt(2 / 5)
+                np.sqrt(self.sample_size) * self.correlation / np.sqrt(2 / 5)
             )
 
         # If there are ties, and the theoretical method is to be used for
@@ -98,13 +99,15 @@ class XiPandas:
         ind = [i + 1 for i in range(self.sample_size)]
         ind2 = [2 * self.sample_size - 2 * ind[i - 1] + 1 for i in ind]
 
-        a = np.mean(
-            [i * j * j for i, j in zip(ind2, sorted_ordered_x_rank)]
-        ) / self.sample_size
+        a = (
+            np.mean([i * j * j for i, j in zip(ind2, sorted_ordered_x_rank)])
+            / self.sample_size
+        )
 
-        c = np.mean(
-            [i * j for i, j in zip(ind2, sorted_ordered_x_rank)]
-        ) / self.sample_size
+        c = (
+            np.mean([i * j for i, j in zip(ind2, sorted_ordered_x_rank)])
+            / self.sample_size
+        )
 
         cq = np.cumsum(sorted_ordered_x_rank)
 
