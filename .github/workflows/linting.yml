@@ -15,6 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-      shell: bash -l {0}
-      run: |
-        flake8 --config .flake8
+    - name: black
+      uses: psf/black@stable
+      with:
+        args: ". --check"

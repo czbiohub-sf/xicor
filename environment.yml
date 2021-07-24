@@ -5,7 +5,6 @@ channels:
   - r
   - defaults
 dependencies:
-  - flake8
   - pandas
   - pytest-cov
   - seaborn
