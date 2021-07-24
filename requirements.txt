@@ -2,4 +2,4 @@ scipy>=1.4.1
 pytest
 pytest-cov
 numpy
-flake8
+black

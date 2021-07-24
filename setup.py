@@ -1,17 +1,15 @@
 import setuptools
 
-with open('README.md') as readme_file:
+with open("README.md") as readme_file:
     readme = readme_file.read()
 
-with open('HISTORY.md') as history_file:
-    history = history_file.read().replace('.. :changelog:', '')
+with open("HISTORY.md") as history_file:
+    history = history_file.read().replace(".. :changelog:", "")
 
-with open('requirements.txt') as requirements_file:
+with open("requirements.txt") as requirements_file:
     requirements = requirements_file.read()
 
-test_requirements = [
-    'pytest', 'coverage', "pytest-cov"
-]
+test_requirements = ["pytest", "coverage", "pytest-cov"]
 
 
 setuptools.setup(
@@ -25,16 +23,15 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/czbiohub/xicor/",
     packages=setuptools.find_packages(
-        exclude=[
-            "tests",
-            "*.tests",
-            "*.tests.*",
-            "tests.*",
-            "test_*"]),
+        exclude=["tests", "*.tests", "*.tests.*", "tests.*", "test_*"]
+    ),
     include_package_data=True,
     install_requires=requirements,
     setup_requires=[
-        "setuptools>=38.6.0", "setuptools_scm", 'setuptools_scm_git_archive'],
+        "setuptools>=38.6.0",
+        "setuptools_scm",
+        "setuptools_scm_git_archive",
+    ],
     license="MIT",
     zip_safe=False,
     classifiers=[
@@ -42,8 +39,7 @@ setuptools.setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
-    use_scm_version={
-        'write_to': 'xicor/version.py'},
-    test_suite='tests',
-    extras_require={'test': test_requirements}
+    use_scm_version={"write_to": "xicor/version.py"},
+    test_suite="tests",
+    extras_require={"test": test_requirements},
 )
