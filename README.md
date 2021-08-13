@@ -12,6 +12,7 @@ xicor is an implementation of the "xi" correlation metric described in Chatterje
 -   Free software: MIT license
 -   Documentation: https://czbiohub.github.io/xicor
 
+
 Installation
 ------------
 
