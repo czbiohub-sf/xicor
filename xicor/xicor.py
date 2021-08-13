@@ -1,17 +1,6 @@
 import numpy as np
 import scipy.stats as ss
 
-
-def _xicorr(X,Y):
-    n = X.size
-    xi = np.argsort(X,kind='quicksort')
-    Y = Y[xi]
-    _,b,c = np.unique(Y,return_counts=True,return_inverse=True)
-    r = np.cumsum(c)[b]
-    _,b,c = np.unique(-Y,return_counts=True,return_inverse=True)
-    l = np.cumsum(c)[b]
-    return 1 - n*np.abs(np.diff(r)).sum() / (2*(l*(n-l)).sum())
-
 class Xi:
     """
     x and y are the data vectors
@@ -19,8 +8,8 @@ class Xi:
 
     def __init__(self, x, y):
 
-        self.x = x
-        self.y = y
+        self.x = np.array(list(x))
+        self.y = np.array(list(y))
         x_tiebroken = self.x.copy()
         a,ix,c = np.unique(x_tiebroken,return_counts=True,return_inverse=True)
         f = c[ix] > 1
