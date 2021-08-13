@@ -5,7 +5,7 @@ class Xi:
     """
     x and y are the data vectors
     """
-    
+
     def __init__(self, x, y):
 
         self.x = np.array(list(x))
@@ -25,11 +25,12 @@ class Xi:
         self.denominator = 2*(self.g*(self.sample_size-self.g)).sum()
         self.correlation = 1 - self.numerator / self.denominator
 
+        self.inverse_g_mean = np.mean(self.g / self.sample_size * (1 - self.g / self.sample_size))
 
     @classmethod
     def xi(cls, x, y):
         return cls(x, y)
-
+    
     def pval_asymptotic(self, ties=False, nperm=1000):
         """
         Returns p values of the correlation
@@ -58,7 +59,7 @@ class Xi:
         # is to be used for calculation P-values:
         # The following steps calculate the theoretical variance
         # in the presence of ties:
-        sorted_ordered_x_rank = sorted(self.f[self.x_ordered])
+        sorted_ordered_x_rank = sorted(self.f)
 
         ind = [i + 1 for i in range(self.sample_size)]
         ind2 = [2 * self.sample_size - 2 * ind[i - 1] + 1 for i in ind]
@@ -81,7 +82,7 @@ class Xi:
         ]
 
         b = np.mean([np.square(i) for i in m])
-        v = (a - 2 * b + np.square(c)) / np.square(self.denominator)
+        v = (a - 2 * b + np.square(c)) / np.square(self.inverse_g_mean)
 
         return 1 - ss.norm.cdf(
             np.sqrt(self.sample_size) * self.correlation / np.sqrt(v)
