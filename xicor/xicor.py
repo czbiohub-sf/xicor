@@ -5,7 +5,7 @@ class Xi:
     """
     x and y are the data vectors
     """
-
+    
     def __init__(self, x, y):
 
         self.x = np.array(list(x))
@@ -58,7 +58,7 @@ class Xi:
         # is to be used for calculation P-values:
         # The following steps calculate the theoretical variance
         # in the presence of ties:
-        sorted_ordered_x_rank = sorted(self.y[self.x_ordered])
+        sorted_ordered_x_rank = sorted(self.f[self.x_ordered])
 
         ind = [i + 1 for i in range(self.sample_size)]
         ind2 = [2 * self.sample_size - 2 * ind[i - 1] + 1 for i in ind]
