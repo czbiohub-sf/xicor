@@ -31,8 +31,6 @@ def anscombes_xis(anscombes_quartet):
 
 
 def test_xi_correlations(anscombes_xis):
-    # random.seed(2020)
-    # np.random.seed(2020)
     assert anscombes_xis["xi_1"].correlation == 0.2749999999999999
     assert anscombes_xis["xi_2"].correlation == 0.6
     assert anscombes_xis["xi_3"].correlation == 0.6190476190476191
@@ -40,8 +38,6 @@ def test_xi_correlations(anscombes_xis):
 
 
 def test_p_val_asymptotic(anscombes_xis):
-    random.seed(2020)
-    np.random.seed(2020)
     # values taken from R code
     assert (
         anscombes_xis["xi_1"].pval_asymptotic(ties=False, nperm=1000)
