@@ -1,4 +1,3 @@
-import random
 import numpy as np
 import pytest
 
@@ -18,7 +17,6 @@ observations on statistical properties.
 
 @pytest.fixture
 def anscombes_xis(anscombes_quartet):
-    random.seed(2020)
     np.random.seed(2020)
     xis = {
         "xi_1": Xi(anscombes_quartet["x_1"], anscombes_quartet["y_1"]),
