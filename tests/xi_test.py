@@ -17,12 +17,12 @@ observations on statistical properties.
 
 @pytest.fixture
 def anscombes_xis(anscombes_quartet):
-    np.random.seed(2020)
+    # np.random.seed(2020)
     xis = {
-        "xi_1": Xi(anscombes_quartet["x_1"], anscombes_quartet["y_1"]),
-        "xi_2": Xi(anscombes_quartet["x_2"], anscombes_quartet["y_2"]),
-        "xi_3": Xi(anscombes_quartet["x_3"], anscombes_quartet["y_3"]),
-        "xi_4": Xi(anscombes_quartet["x_4"], anscombes_quartet["y_4"]),
+        "xi_1": Xi(anscombes_quartet["x_1"], anscombes_quartet["y_1"], 2020),
+        "xi_2": Xi(anscombes_quartet["x_2"], anscombes_quartet["y_2"], 2020),
+        "xi_3": Xi(anscombes_quartet["x_3"], anscombes_quartet["y_3"], 2020),
+        "xi_4": Xi(anscombes_quartet["x_4"], anscombes_quartet["y_4"], 2020),
     }
 
     return xis
