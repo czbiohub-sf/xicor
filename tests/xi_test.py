@@ -1,4 +1,3 @@
-import random
 import numpy as np
 import pytest
 
@@ -18,21 +17,18 @@ observations on statistical properties.
 
 @pytest.fixture
 def anscombes_xis(anscombes_quartet):
-    random.seed(2020)
-    np.random.seed(2020)
+    # np.random.seed(2020)
     xis = {
-        "xi_1": Xi(anscombes_quartet["x_1"], anscombes_quartet["y_1"]),
-        "xi_2": Xi(anscombes_quartet["x_2"], anscombes_quartet["y_2"]),
-        "xi_3": Xi(anscombes_quartet["x_3"], anscombes_quartet["y_3"]),
-        "xi_4": Xi(anscombes_quartet["x_4"], anscombes_quartet["y_4"]),
+        "xi_1": Xi(anscombes_quartet["x_1"], anscombes_quartet["y_1"], 2020),
+        "xi_2": Xi(anscombes_quartet["x_2"], anscombes_quartet["y_2"], 2020),
+        "xi_3": Xi(anscombes_quartet["x_3"], anscombes_quartet["y_3"], 2020),
+        "xi_4": Xi(anscombes_quartet["x_4"], anscombes_quartet["y_4"], 2020),
     }
 
     return xis
 
 
 def test_xi_correlations(anscombes_xis):
-    random.seed(2020)
-    np.random.seed(2020)
     assert anscombes_xis["xi_1"].correlation == 0.2749999999999999
     assert anscombes_xis["xi_2"].correlation == 0.6
     assert anscombes_xis["xi_3"].correlation == 0.6190476190476191
@@ -40,8 +36,6 @@ def test_xi_correlations(anscombes_xis):
 
 
 def test_p_val_asymptotic(anscombes_xis):
-    random.seed(2020)
-    np.random.seed(2020)
     # values taken from R code
     assert (
         anscombes_xis["xi_1"].pval_asymptotic(ties=False, nperm=1000)

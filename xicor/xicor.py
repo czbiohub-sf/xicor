@@ -7,10 +7,11 @@ class Xi:
     x and y are the data vectors
     """
 
-    def __init__(self, x, y):
+    def __init__(self, x, y, seed):
 
         self.x = x
         self.y = y
+        self.seed = seed
 
     @property
     def sample_size(self):
@@ -23,6 +24,7 @@ class Xi:
         # random shuffling of the data - reason to use random.choice is that
         # pd.sample(frac=1) uses the same randomizing algorithm
         len_x = len(self.x)
+        np.random.seed(self.seed)
         randomized_indices = np.random.choice(np.arange(len_x), len_x, replace=False)
         randomized = [self.x[idx] for idx in randomized_indices]
         # same as pandas rank method 'first'
@@ -46,6 +48,7 @@ class Xi:
     @property
     def x_ordered(self):
         # order of the x's, ties broken at random.
+        np.random.seed(self.seed)
         return np.argsort(self.x_ordered_rank)
 
     @property
